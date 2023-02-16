@@ -1,13 +1,31 @@
 package main.kotlin
 
-fun main(args: Array<String>) {
-    println("Hello, ${args[0]}")
+import kotlin.random.Random
 
-    // Will assign kotlin.Unit
-    val isUnit = println("This is an expression")
-    println(isUnit)
+fun randomDay() : String {
+    val week = arrayOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+    return week[Random.nextInt(week.size)]
+}
 
-    val temperature = 10
-    val message = "The water temperature is ${ if (temperature > 50) "too warm" else "OK"}."
-    println(message)
+fun fishFood(day : String) : String {
+    return when(day) {
+        "Monday" -> "flakes"
+        "Tuesday" -> "pellets"
+        "Wednesday" -> "redworms"
+        "Thursday" -> "granules"
+        "Friday" -> "mosquitoes"
+        "Saturday" -> "lettuce"
+        "Sunday" -> "plankton"
+        else -> "nothing"
+    }
+}
+
+fun feedTheFish() {
+    val day = randomDay()
+    val food = fishFood(day)
+    println("Today is $day and the fish eat $food")
+}
+
+fun main() {
+    feedTheFish()
 }
